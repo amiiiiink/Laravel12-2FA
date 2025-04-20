@@ -7,10 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About 2 Factor Authentication Project
+## About 2-Factor Authentication Project
 
 This is a Modular Testable System To Play Coding
 
--  
-- [Powerful dependency injection container](https://laravel.com/docs/container).
+-  validate email
+-  validate user is guest
+-  throttle the route
+-  stop block users
+-  find user in DB or Fail
+-  generate token
+-  save token
+-  send Token
+
 
