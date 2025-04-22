@@ -1,6 +1,8 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
 
-Route::get('request-token',['TokenSenderController','issueToken']);
+use Illuminate\Support\Facades\Route;
+use Modules\TwoFactorAuth\Http\Controllers\TokenSenderController;
+
+Route::get('request-token',[TokenSenderController::class,'issueToken']);
