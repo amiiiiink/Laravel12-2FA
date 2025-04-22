@@ -8,6 +8,6 @@ class TokenSenderController extends Controller
 {
     public function issueToken()
     {
-            return "issueToken";
+            return "Token issued";
     }
 }
