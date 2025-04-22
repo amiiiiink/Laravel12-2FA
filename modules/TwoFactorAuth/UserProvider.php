@@ -4,8 +4,8 @@ namespace Modules\TwoFactorAuth;
 
 class UserProvider
 {
-    public function getUserByEmail(string $email)
+    public function getUserByEmail(string $email): string
     {
-        return ['email'=>'iman@gmail.com'];
+        return $email;
     }
 }
