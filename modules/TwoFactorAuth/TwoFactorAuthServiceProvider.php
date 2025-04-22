@@ -3,6 +3,7 @@ namespace Modules\TwoFactorAuth;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Modules\TwoFactorAuth\Contracts\UserProviderInterface;
 use Modules\TwoFactorAuth\Facades\UserProviderFacade;
 
 class TwoFactorAuthServiceProvider extends ServiceProvider
@@ -14,7 +15,8 @@ class TwoFactorAuthServiceProvider extends ServiceProvider
     public function register()
     {
         parent::register();
-        UserProviderFacade::shouldProxyTo(UserProvider::class);
+//        UserProviderFacade::shouldProxyTo(UserProvider::class);
+        app()->singleton(UserProviderInterface::class,UserProvider::class);
     }
 
     protected function loadRoutes(): void
