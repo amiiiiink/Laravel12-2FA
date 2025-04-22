@@ -1,28 +1,15 @@
 <?php
 
-namespace Modules\TwoFactorAuth\tests\Feature;
+namespace Modules\TwoFactorAuth\Tests\Feature;
 
-use Mockery;
-use Modules\TwoFactorAuth\Contracts\UserProviderInterface;
-use Modules\TwoFactorAuth\Facades\UserProviderFacade;
-use Modules\TwoFactorAuth\UserProvider;
 use Tests\TestCase;
 
 class IssueTokenTest extends TestCase
 {
-    public function test_issue_token_route_returns_success()
+    public function test_issue_token_without_hitting_database()
     {
-
-        $mock = \Mockery::mock(UserProviderInterface::class);
-        $mock->shouldReceive('getUserByEmail')
-            ->once()
-            ->with('akarimi@gmail.com')
-            ->andReturn('akarimi@gmail.com');
-
-        $this->app->instance(\Modules\TwoFactorAuth\Contracts\UserProviderInterface::class, $mock);
-
-
-        $response = $this->post('/request-token');
-
+        $response = $this->post('/request-token', ['email' => 'user@example.com']);
+        $response->assertStatus(200);
+        $response->assertSeeText('user@example.com');
     }
 }
