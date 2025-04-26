@@ -16,10 +16,16 @@ class TokenSenderController extends Controller
 //    }
     public function issueToken()
     {
-        return  request('email');
+        $email=request('email');
+        $user=UserProviderFacade::getUserByEmail($email);
 
-//        $user = User::query()->where('email', $email)->first();
-//        $token = random_int(100000,1000000-1);
-//        cache()->set($token.'_2factor_auth',$user->id,120);
+        $token = random_int(100000,1000000-1);
+        cache()->set($token.'_2factor_auth',$user->id,120);
+
+        return response()->json([
+            'id' => $user->id,
+            'email' => $user->email,
+            'name' => $user->name,
+        ]);
     }
 }

@@ -15,8 +15,8 @@ class TwoFactorAuthServiceProvider extends ServiceProvider
     public function register()
     {
         parent::register();
-//        UserProviderFacade::shouldProxyTo(UserProvider::class);
-        app()->singleton(UserProviderInterface::class,UserProvider::class);
+        UserProviderFacade::shouldProxyTo(UserProvider::class);
+//        app()->singleton(UserProviderInterface::class,UserProvider::class);
     }
 
     protected function loadRoutes(): void
